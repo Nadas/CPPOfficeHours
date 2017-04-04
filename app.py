@@ -35,7 +35,7 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     name = parameters.get("prof-name")
 
-    reader = csv.reader(open('professors.csv', 'r'))
+    reader = csv.reader(open('prof-office-hours.csv', 'r'))
     officeHours = {}
     for row in reader:
        k, v = row
