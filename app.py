@@ -29,8 +29,6 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "office.hours" or req.get("result").get("action") != "office.location":
-        return {}
 
     result = req.get("result")
     parameters = result.get("parameters")
