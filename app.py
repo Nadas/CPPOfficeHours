@@ -45,7 +45,7 @@ def makeWebhookResult(req):
     #                'Sampath Jayarathna':300
     #                }
 
-    speech = "Professor's " + name + " office hours are " + str(officeHours[name]) + "."
+    speech = "Professor's " + name + " office hours are on" + str(officeHours[name]) + "."
 
     print("Response:")
     print(speech)
