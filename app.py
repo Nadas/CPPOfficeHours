@@ -34,9 +34,9 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     name = parameters.get("prof-name")
 
-    officeHours = { 'Yu Sun':'Monday and Wednesday, 3.00pm - 5.00pm', 
-                    'Gilbert Young':'Monday and Wednesday, 3.00pm - 5.00pm', 
-                    'Sampath Jayarathna':'Monday and Wednesday, 3.00pm - 5.00pm'
+    officeHours = { 'Yu Sun':100, 
+                    'Gilbert Young':200, 
+                    'Sampath Jayarathna':300
                     }
 
     speech = "Professor's " + name + " office hours are " + str(officeHours[name]) + "."
