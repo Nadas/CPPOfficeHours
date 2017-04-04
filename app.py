@@ -29,20 +29,23 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if (req.get("result").get("action") != "office.hours") or (req.get("result").get("action") != "office.location"):
+    if req.get("result").get("action") != "office.hours":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
     name = parameters.get("prof-name")
 
+    reader = csv.reader(open('professors.csv', 'r'))
     officeHours = {}
+    for row in reader:
+       k, v = row
+       officeHours[k] = v
 
-    if req.get("result").get("action") == "office.hours":
-        reader = csv.reader(open('prof-office-hours.csv', 'r'))
-        for row in reader:
-           k, v = row
-           officeHours[k] = v
-    
+    #officeHours = { 'Yu Sun':100, 
+    #                'Gilbert Young':200, 
+    #                'Sampath Jayarathna':300
+    #                }
+
     speech = "Professor's " + name + " office hours are on" + str(officeHours[name]) + "."
 
     print("Response:")
