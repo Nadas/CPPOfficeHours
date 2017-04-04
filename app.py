@@ -48,11 +48,13 @@ def makeWebhookResult(req):
        k, v = row
        officeLocation[k] = v
 
-    if req.get("result").get("action") = "office.hours":
+
+    if req.get("result").get("action") == "office.hours":
         speech = "Professor's " + name + " office hours are on" + str(officeHours[name]) + "."
 
-    if req.get("result").get("action") = "office.location":
-        speech = "Professor's " + name + " office location is" + str(officeLocation[name]) + "."
+    if req.get("result").get("action") == "office.location":
+        speech = "Professor's " + name + " office is on" + str(officeLocation[name]) + "."
+
 
     print("Response:")
     print(speech)
