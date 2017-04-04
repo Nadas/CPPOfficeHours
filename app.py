@@ -34,11 +34,15 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     name = parameters.get("prof-name")
 
-    reader = csv.reader(open('prof-office-hours.csv', 'r'))
     officeHours = {}
-    for row in reader:
-       k, v = row
-       officeHours[k] = v
+    officeLocation = {}
+
+    f = open( 'prof-office-hours.csv', 'rU' )
+    for line in f:
+        cells = line.split( "," )
+        officeHours[cells[0]] = cells[1]
+        officeLocation[cells[0]] = cells[2]
+    f.close()
 
     speech = "Professor's " + name + " office hours are on" + str(officeHours[name]) + "."
 
