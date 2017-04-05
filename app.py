@@ -45,10 +45,10 @@ def makeWebhookResult(req):
     f.close()
 
     if req.get("result").get("action") == "office.hours":
-        speech = "Professor's " + name + " office hours are on" + str(officeHours[name]) + "."
+        speech = "Professor " + name + "'s office hours are on" + str(officeHours[name]) + "."
 
     if req.get("result").get("action") == "office.location":
-        speech = "Professor's " + name + " office is at " + str(officeLocation[name]) + "."
+        speech = "Professor " + name + "'s office is at " + str(officeLocation[name]) + "."
 
     print("Response:")
     print(speech)
