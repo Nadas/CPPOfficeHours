@@ -33,6 +33,7 @@ def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
     name = parameters.get("prof-name")
+    action = req.get("result").get("action")
 
     officeHours = {}
     officeLocation = {}
@@ -44,10 +45,10 @@ def makeWebhookResult(req):
         officeLocation[cells[0]] = cells[2]
     f.close()
 
-    if req.get("result").get("action") == "office.hours":
+    if action == "office.hours":
         speech = "Professor " + name + "'s office hours are on" + str(officeHours[name]) + "."
 
-    if req.get("result").get("action") == "office.location":
+    if action == "office.location":
         speech = "Professor " + name + "'s office is at " + str(officeLocation[name]) + "."
 
     print("Response:")
